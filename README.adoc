@@ -1,3 +1,19 @@
 = RPG7 "White Shadow"
 
 Project start 2022-12-30 13:12
+
+== Main Features
+
+* Explore endless randomly generated areas in a dark surreal setting.
+* Brave greater challenges for greater rewards.
+* Manage a rag-tag group of survivors, develop each characters skills as they
+are used.
+* Meet new characters as your camp grows into a village.
+* Carefully manage time and resources to make sure the village survives another
+cycle.
+* Collect potent artefacts and master powerful magic to increase the chances of
+your survival.
+* Characters will die, yet the village may still survive, will there rise
+another brave -- or foolish -- enough to retrieve the lost gear before it is
+gone forever?
+* In this strange world, you are never at the top of the food chain.
