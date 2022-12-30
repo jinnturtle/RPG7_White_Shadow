@@ -18,6 +18,7 @@ CXX = g++
 LL = g++
 CC = gcc
 CXX_FLAGS = -std=c++17 -Wall -Wextra -MMD -MF $(patsubst %.o,%.d,$@)
+CXX_FLAGS += -DPROGRAM_VERSION="$(shell git describe)"
 CC_FLAGS = -Wall -Wextra
 LD_FLAGS =
 DBG_FLAGS = -ggdb -DDEBUG=8

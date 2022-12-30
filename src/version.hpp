@@ -3,6 +3,13 @@
 
 #include <string>
 
+/* PROGRAM_VERSION is expedted to be defined via compiler flags, likely stored
+ * in a text file in the project directory */
+#ifndef PROGRAM_VERSION
+    #warning "PROGRAM_VERSION is not defined"
+    #define PROGRAM_VERSION unknown-version
+#endif
+
 auto version_str() -> std::string;
 
 #endif // SRC_VERSION_HPP_
