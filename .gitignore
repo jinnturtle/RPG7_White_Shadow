@@ -1,0 +1,6 @@
+# compiled files and compilation artefacts
+obj/*
+exe
+
+# generated project and auxiliary files
+tags
