@@ -2,14 +2,17 @@ NAME = exe
 
 CXX_SRC =\
 	main.cpp \
-	version.cpp \
-	helpers.cpp \
-	FPS_manager.cpp \
 	App_environment.cpp \
+	Creature.cpp \
+	Level_map.cpp \
+	FPS_manager.cpp \
 	Font_atlas.cpp \
+	Tile.cpp \
+	helpers.cpp \
 	itoa.cpp \
+	logs.cpp \
 	main_window.cpp \
-	logs.cpp
+	version.cpp
 
 C_SRC =\
 	timestamp.c

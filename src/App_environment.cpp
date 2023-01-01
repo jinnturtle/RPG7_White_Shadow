@@ -40,10 +40,10 @@ auto App_environment::load_textures() -> void
         return;
     }
 
-    std::array<std::string, DEF_TEX_array_size> paths;
-    paths[DEF_TEX_human] = "data/gfx/human.png";
-    paths[DEF_TEX_floor] = "data/gfx/floor.png";
-    paths[DEF_TEX_wall]  = "data/gfx/wall.png";
+    std::array<std::string, TEX_IDX_array_size> paths;
+    paths[TEX_IDX_human] = "data/gfx/human.png";
+    paths[TEX_IDX_floor] = "data/gfx/floor.png";
+    paths[TEX_IDX_wall]  = "data/gfx/wall.png";
 
     for (size_t i {0}; i < this->texs.size(); ++i) {
         this->texs.at(i) = load_texture(paths.at(i), this->ren);
@@ -64,9 +64,9 @@ auto App_environment::load_fonts() -> void
 
     constexpr int font_size {16};
 
-    std::array<std::string, DEF_FONT_array_size> paths;
-    paths[DEF_FONT_mono_blend] = "data/fonts/terminus/TerminusTTF-4.46.0.ttf";
-    paths[DEF_FONT_mono_fast] = "data/fonts/terminus/TerminusTTF-4.46.0.ttf";
+    std::array<std::string, FONT_IDX_array_size> paths;
+    paths[FONT_IDX_mono_blend] = "data/fonts/terminus/TerminusTTF-4.46.0.ttf";
+    paths[FONT_IDX_mono_fast]  = "data/fonts/terminus/TerminusTTF-4.46.0.ttf";
 
     for (size_t i {0}; i < this->fonts.size(); ++i) {
         this->fonts.at(i) = new Font_atlas_mono(
@@ -78,7 +78,7 @@ auto App_environment::load_fonts() -> void
             Raster_blended);
     }
 
-//     this->fonts[DEF_FONT_mono_blend] = new Font_atlas_mono(
+//     this->fonts[FONT_IDX_mono_blend] = new Font_atlas_mono(
 //         this->ren,
 //         "data/fonts/terminus/TerminusTTF-4.46.0.ttf",
 //         16,
@@ -86,7 +86,7 @@ auto App_environment::load_fonts() -> void
 //         SDL_Color{0x00, 0x00, 0x00, 0x00},
 //         Raster_blended);
 //
-//     this->fonts[DEF_FONT_mono_fast] = new Font_atlas_mono(
+//     this->fonts[FONT_IDX_mono_fast] = new Font_atlas_mono(
 //         this->ren,
 //         "data/fonts/terminus/TerminusTTF-4.46.0.ttf",
 //         16,

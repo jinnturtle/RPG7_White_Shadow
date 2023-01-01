@@ -6,24 +6,23 @@
 
 #include "Font_atlas.hpp"
 
-// TODO this texture loading logic is temporary, needs rework
-enum Default_texture {
-    DEF_TEX_human = 0,
-    DEF_TEX_floor,
-    DEF_TEX_wall,
+enum Texture_index {
+    TEX_IDX_human = 0,
+    TEX_IDX_floor,
+    TEX_IDX_wall,
 
-    DEF_TEX_array_size
+    TEX_IDX_array_size
 };
 
-enum Default_font {
-    DEF_FONT_mono_fast = 0,
-    DEF_FONT_mono_blend,
+enum Font_index {
+    FONT_IDX_mono_fast = 0,
+    FONT_IDX_mono_blend,
 
-    DEF_FONT_array_size
+    FONT_IDX_array_size
 };
 
 class App_environment final {
- public:
+public:
     App_environment(std::string title, int win_w, int win_h);
     ~App_environment();
 
@@ -34,15 +33,15 @@ class App_environment final {
     auto err() -> bool; // returns true if there is an error
     auto get_err_txt() -> const char*;
 
-    std::array<SDL_Texture*, DEF_TEX_array_size> texs; // default textures
-    std::array<Font_atlas*, DEF_FONT_array_size> fonts; // default fonts
+    std::array<SDL_Texture*, TEX_IDX_array_size> texs; // default textures
+    std::array<Font_atlas*, FONT_IDX_array_size> fonts; // default fonts
     std::string title; // title/name of the application
     int win_w; // main window width
     int win_h; // main window height
     SDL_Window* win; // main window
     SDL_Renderer* ren; // main renderer
 
- private:
+private:
     auto set_err(const std::string& txt) -> void;
     std::string err_txt; // contains error text if an error occured
 };

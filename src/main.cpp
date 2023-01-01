@@ -20,9 +20,10 @@ auto deinit_sdl(App_environment* app) -> void;
 
 auto main() -> int
 {
-    App_environment app(std::move("RPG7 White Shadow"), 800, 640);
+    App_environment app(std::move("RPG7 White Shadow"), 1333, 720);
 
     DBG(1, "starting ", app.title, " version ", version_str());
+    DBG(0, "debug level: ", DEBUG);
 
     if (init_sdl() != 0) {
         logs::err("fatal, could not initialise SDL");

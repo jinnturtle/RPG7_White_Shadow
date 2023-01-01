@@ -2,7 +2,9 @@
 
 Project start 2022-12-30 13:12
 
-== Main Features
+== Idea
+
+=== Main Features
 
 * Explore endless randomly generated areas in a dark surreal setting.
 * Brave greater challenges for greater rewards.
@@ -17,3 +19,47 @@ your survival.
 another brave -- or foolish -- enough to retrieve the lost gear before it is
 gone forever?
 * In this strange world, you are never at the top of the food chain.
+
+== Done so far
+
+=== v0.0.0-prototype_1 Basic Framework
+* [x] Rudimentary framework.
+** [x] Test level.
+*** Some tiles to render.
+*** A floor tile and a wall tile.
+** [x] Rudimentary player characer.
+*** Basic navigation.
+*** Can't walk through walls.
+
+== In Progress
+
+=== v0.0.1-prototype_1 Groundwork for Basic Map and Level Object System
+* TODO - flesh out Game_level system idea No.3
+** Design player control input handling specifics in the level system
+
+* [x] Rename default texture index reference form "default texture ..." to
+"texture_index ...".
+** Update texture reference enum form from DEF_TEX_* to TEX_INDEX_*.
+** Update type name.
+* [ ] Implement basic level map system.
+** Creatures i.e. just the player atm.
+** Structures i.e. floor, wall.
+* [ ] Update test map with a static (for now) dummy creature
+
+== TODO
+
+=== v0.0.2-prototype_1
+* [ ] Add a few test mobs
+* [ ] Implement rudimentary mobs
+** Hp
+** Attack
+* Implement rudimentary mob behavior
+** [ ] Homing to player
+** [ ] Dealing damage
+* [ ] Implement rudimentary way for player to deal damage
+
+=== v0.0.x-prototype_1
+* Etc.
+
+=== v0.1.0-prototype_1
+* TODO - define 0.1.0 feature requirements

@@ -1,0 +1,101 @@
+@startuml
+class Game_level_v1 {
+-tiles:   array2<Tile_v1>
+-mobs:    array<Creature_v1>
+-thing1s: array<Thing1_v1>
+-thing2s: array<Thing2_v1>
+}
+note top of Game_level_v1
+    The first idea.
+end note
+
+class Game_level_v2 {
+-tiles : array2<Tile_v2*>
++update()
++render()
+}
+note top of Game_level_v2
+    Idea No.2. Going with this one
+    for now. Maybe not so good now that
+    I've thought about it.
+
+    Pros:
+    * Dont' have to iterate over arrays
+    of each type.
+
+    Cons:
+    * Every time objects move from tile
+    to tile (this includes Creatures in
+    this version), may need to allocate
+    more memory in the objects array
+    for each tile to hold the new
+    pointers.
+end note
+
+class Tile_v2 {
+-objects: array<Level_object_v2*>
++render()
+}
+
+interface Level_object_v2 {
++ {abstract} get_type() -> Level_object_v2_type
++ {abstract} render()
+}
+note right of Level_object_v2::get_type
+    Would be great if we can
+    avoid type ID vars/functions.
+end note
+
+
+Class Game_level_v3 {
+-tiles: matrix<2, Tile_v3*>
+-creatures: array<Creature_v3*>
+}
+note top of Game_level_v3
+    Idea No.3. (WIP concept)
+    Sort of a hybrid between v1 & v2.
+end note
+
+Class Tile_v3 {
++get_type() -> Tile.Type
++render()
+-interactables: array<Interactable_v3*>
+-items: array<Item_v3*>
+}
+note right of Tile_v3::interactables
+    E.g. switch, torch, chest, door.
+end note
+note right of Tile_v3::items
+    Loose items on the ground.
+end note
+note right of Tile_v3::type
+    E.g. wall, floor, water.
+end note
+
+Class Creature_v3 {
+-inventory: array<Item_v3*>
+-position: vec2
+}
+
+'-------------------------------------------------------------------------------
+
+Game_level_v1 *-- Tile_v1
+Game_level_v1 *-- Creature_v1
+Game_level_v1 *-- Thing1_v1
+Game_level_v1 *-- Thing2_v1
+
+Game_level_v2 *-- Tile_v2
+Tile_v2       *-- Level_object_v2
+Level_object_v2 <-- Structure_v2
+Level_object_v2 <-- Creature_v2
+Level_object_v2 <-- Equipment_v2
+Level_object_v2 <-- Consumable_v2
+Level_object_v2 <-- Container_v2
+
+Game_level_v3 *-- Tile_v3
+Game_level_v3 *-- Creature_v3
+Tile_v3       *-- Item_v3
+Creature_v3   *-- Item_v3
+Item_v3       <-- Consumable_v3
+Item_v3       <-- Equipment_v3
+@enduml
