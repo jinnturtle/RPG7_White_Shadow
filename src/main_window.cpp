@@ -50,7 +50,8 @@ auto run_main_window(App_environment* app) -> void
         }
     }
 
-    level.add_creature(new Creature_human({.x = 5, .y = 3}));
+    level.add_creature(new Creature_human({.x = 5, .y = 3}, true));
+
 
     // main loop
     bool exit {false};
@@ -58,6 +59,9 @@ auto run_main_window(App_environment* app) -> void
     SDL_Event event {0};
     std::array<char, 8> fps_buf {0};
     Vec2 fps_pos {.x = 0, .y = 0};
+    // will prob need a FIFO queue
+    std::vector<Creature_control_command> player_input;
+    player_input.reserve(5);
     while (!exit) {
         // input stage
 
@@ -65,12 +69,16 @@ auto run_main_window(App_environment* app) -> void
             if (event.type == SDL_KEYDOWN) {
                 if (event.key.keysym.sym == SDLK_h) {
                     // player movement
+                    player_input.push_back(CCC_move_left);
                 } else if (event.key.keysym.sym == SDLK_j) {
                     // player movement
+                    player_input.push_back(CCC_move_down);
                 } else if (event.key.keysym.sym == SDLK_k) {
                     // player movement
+                    player_input.push_back(CCC_move_up);
                 } else if (event.key.keysym.sym == SDLK_l) {
                     // player movement
+                    player_input.push_back(CCC_move_right);
                 } else if (event.key.keysym.sym == SDLK_f) {
                     if (event.key.keysym.mod & KMOD_SHIFT) {
                         fps_man.toggle_cap();
@@ -89,6 +97,9 @@ auto run_main_window(App_environment* app) -> void
         }
 
         // update stage
+
+        level.update(&player_input);
+        player_input.clear();
 
         // render stage
 

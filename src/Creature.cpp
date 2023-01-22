@@ -1,5 +1,39 @@
 #include "Creature.hpp"
 
+Creature::Creature(Vec2 pos, bool human_control)
+: pos {pos}
+, human_control {human_control}
+{}
+
+auto Creature::is_human_controlled() -> bool
+{
+    return this->human_control;
+}
+
+auto Creature::move(Creature_control_command cmd) -> void
+{
+    switch(cmd) {
+        case CCC_move_up:
+            this->pos.y--;
+            break;
+        case CCC_move_down:
+            this->pos.y++;
+            break;
+        case CCC_move_left:
+            this->pos.x--;
+            break;
+        case CCC_move_right:
+            this->pos.x++;
+            break;
+        default:
+            break;
+    }
+}
+
+Creature_human::Creature_human(Vec2 pos, bool human_control)
+: Creature(pos, human_control)
+{}
+
 auto Creature_human::render(App_environment* app) -> void
 {
     // TODO get rid of magic numbers

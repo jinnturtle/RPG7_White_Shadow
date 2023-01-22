@@ -68,6 +68,17 @@ auto Level_map::render(App_environment* app) -> void
     for (auto& creature : this->creatures) { creature->render(app); }
 }
 
+auto Level_map::update(std::vector<Creature_control_command>* commands) -> void
+{
+    for (auto& creature : this->creatures) {
+        if (creature->is_human_controlled()) {
+            for (size_t i {0}; i < commands->size(); ++i) {
+                creature->move(commands->at(i));
+            }
+        }
+    }
+}
+
 // private ---------------------------------------------------------------------
 auto Level_map::check_bounds(size_t x, size_t y) -> bool
 {

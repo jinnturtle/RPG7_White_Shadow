@@ -1,6 +1,8 @@
 #ifndef SRC_LEVEL_MAP_HPP_
 #define SRC_LEVEL_MAP_HPP_
 
+#include <vector>
+
 #include "App_environment.hpp"
 #include "Tile.hpp"
 #include "Creature.hpp"
@@ -14,6 +16,7 @@ public:
     auto add_creature(Creature* creature) -> void;
     auto put_tile(size_t x, size_t y, Tile* tile) -> void;
     auto render(App_environment* app) -> void;
+    auto update(std::vector<Creature_control_command>* commands) -> void;
     //auto replace_obj(size_t x, size_t y, size_t l, Level_object* obj) -> void;
 
 private:
