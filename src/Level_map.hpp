@@ -1,6 +1,8 @@
 #ifndef SRC_LEVEL_MAP_HPP_
 #define SRC_LEVEL_MAP_HPP_
 
+#include <vector>
+
 #include "App_environment.hpp"
 #include "Tile.hpp"
 #include "Creature.hpp"
@@ -10,6 +12,11 @@ class Level_map final {
 public:
     Level_map(size_t w, size_t h, size_t tile_w, size_t tile_h);
     ~Level_map();
+
+    friend class Level_master;
+
+    auto get_creature(size_t x, size_t y) -> Creature*;
+    auto get_tile(size_t x, size_t y) -> const Tile*;
 
     auto add_creature(Creature* creature) -> void;
     auto put_tile(size_t x, size_t y, Tile* tile) -> void;

@@ -32,6 +32,24 @@ Level_map::~Level_map()
     }
 }
 
+auto Level_map::get_creature(size_t x, size_t y) -> Creature*
+{
+    for (auto& creature : this->creatures) {
+        if (static_cast<size_t>(creature->get_pos()->x) == x
+            && static_cast<size_t>(creature->get_pos()->y) == y
+        ) {
+            return creature;
+        }
+    }
+
+    return nullptr;
+}
+
+auto Level_map::get_tile(size_t x, size_t y) -> const Tile*
+{
+    return this->tiles->at(x)->at(y);
+}
+
 auto Level_map::add_creature(Creature* creature) -> void
 {
     this->creatures.push_back(creature);

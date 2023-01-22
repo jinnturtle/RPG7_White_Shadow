@@ -14,8 +14,6 @@ auto load_surface(const std::string& path) -> SDL_Surface*
 
     SDL_Surface* sfc {IMG_Load(path.c_str())};
     if (sfc == nullptr) {
-        // TODO - make a variadic logs::err
-        // logs::err(cru::logs::ERR_IMG, "could not load surface from ", path);
         logs::errt(logs::ERR_img, "could not load surface from " + path);
         return nullptr;
     }
@@ -35,8 +33,8 @@ auto load_texture(const std::string& path, SDL_Renderer* ren) -> SDL_Texture*
     sfc = nullptr;
 
     if (tex == nullptr) {
-        // TODO - make and use a variadic logs::err
-        logs::errt(logs::ERR_sdl, "could not create texture form surface "+path);
+        logs::errt(
+                logs::ERR_sdl, "could not create texture form surface " + path);
 
         return nullptr;
     }

@@ -1,0 +1,46 @@
+@startuml
+header Creature Control System Requirements Analysis via Activity Diagram
+title Creature Control System: Requirements Analysis v1.0
+
+start
+:read inputs;
+:process misc. inputs;
+:loop through
+map creatures;
+while (end of array?) is (false)
+    if (human_control) then (true)
+        :process inputs;
+        note: need relevant inputs here
+        while (input) is (true)
+            if (movement) then (true)
+                :read target at coordinates;
+                note
+                    need access to at
+                    least some Level_map
+                    data
+                end note
+                if (has creature?) then (true)
+                    :process attack;
+                    note
+                        need access to target
+                        Creature data? Prob member
+                        function is enough.
+                    end note
+                else (false)
+                    if (passable?) then (true)
+                        :process movement;
+                    else (false)
+                    endif
+                endif
+            else if (inv, etc) then (true)
+                :process input;
+            endif
+        endwhile (false)
+    else (false)
+        :process AI control;
+    endif
+endwhile (true)
+:update;
+:render;
+end
+@enduml

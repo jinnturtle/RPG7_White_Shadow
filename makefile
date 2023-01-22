@@ -4,9 +4,10 @@ CXX_SRC =\
 	main.cpp \
 	App_environment.cpp \
 	Creature.cpp \
-	Level_map.cpp \
 	FPS_manager.cpp \
 	Font_atlas.cpp \
+	Level_map.cpp \
+	Level_master.cpp \
 	Tile.cpp \
 	helpers.cpp \
 	itoa.cpp \

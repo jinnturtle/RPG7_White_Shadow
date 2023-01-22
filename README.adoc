@@ -1,10 +1,12 @@
 = RPG7 "White Shadow"
+:toc:
 
-Project start 2022-12-30 13:12
+Project start date: 2022-12-30 13:12.
 
 == Idea
 
 === Main Features
+Subject to change unrecognisably as the project develops.
 
 * Explore endless randomly generated areas in a dark surreal setting.
 * Brave greater challenges for greater rewards.
@@ -20,46 +22,50 @@ another brave -- or foolish -- enough to retrieve the lost gear before it is
 gone forever?
 * In this strange world, you are never at the top of the food chain.
 
-== Done so far
-
-=== v0.0.0-prototype_1 Basic Framework
-* [x] Rudimentary framework.
-** [x] Test level.
-*** Some tiles to render.
-*** A floor tile and a wall tile.
-** [x] Rudimentary player characer.
-*** Basic navigation.
-*** Can't walk through walls.
+Most technical design docs are link:gdd/[here].
 
 == In Progress
 
-=== v0.0.1-prototype_1 Groundwork for Basic Map and Level Object System
-* TODO - flesh out Game_level system idea No.3
-** Design player control input handling specifics in the level system
-
-* [x] Rename default texture index reference form "default texture ..." to
-"texture_index ...".
-** Update texture reference enum form from DEF_TEX_* to TEX_INDEX_*.
-** Update type name.
-* [ ] Implement basic level map system.
-** Creatures i.e. just the player atm.
-** Structures i.e. floor, wall.
-* [ ] Update test map with a static (for now) dummy creature
+=== v0.0.2-prototype_1 Groundwork for Creature Control and Object Interactions
+* [x] Implement a general creature control system.
+* [x] Re-introduce terrain constraints on movement i.e. can't walk through walls
+, but via the general creature control system this time.
+* [x] Groundwork for level object interaction system.
+* [x] Player control input handling via the creature control system.
+* [x] Have an enemy critter on the test map, a static dummy (for now).
 
 == TODO
 
-=== v0.0.2-prototype_1
-* [ ] Add a few test mobs
-* [ ] Implement rudimentary mobs
-** Hp
-** Attack
-* Implement rudimentary mob behavior
-** [ ] Homing to player
-** [ ] Dealing damage
+=== v0.0.3-prototype_1
+* [ ] Add a few test mobs.
+* [ ] Implement rudimentary mobs.
+** Hp.
+** Attack.
+* Implement rudimentary mob behavior.
+** [ ] Homing to player.
+** [ ] Dealing damage.
 * [ ] Implement rudimentary way for player to deal damage
 
 === v0.0.x-prototype_1
+* Random level generation.
+* Basic inventory system.
 * Etc.
 
 === v0.1.0-prototype_1
-* TODO - define 0.1.0 feature requirements
+* TODO - define 0.1.0-prototype_1 feature requirements
+
+== Done so far
+
+=== v0.0.0-prototype_1 Basic Framework
+* [x] Rudimentary rendering & frame-control framework.
+** [x] Test level.
+*** Some tiles to render.
+*** A floor tile and a wall tile.
+** [x] Rudimentary player character.
+*** Basic navigation.
+*** Can't walk through walls.
+
+=== v0.0.1-prototype_1 Groundwork for Basic Map and Level Object System
+* [x] Implement basic level map system.
+** Creatures i.e. just the player atm.
+** Structures i.e. floor, wall.
