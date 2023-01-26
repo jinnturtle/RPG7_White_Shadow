@@ -23,7 +23,7 @@ gone forever?
 == Done so far
 
 === v0.0.0-prototype_1 Basic Framework
-* [x] Rudimentary framework.
+* [x] Rudimentary rendering & frame-control framework.
 ** [x] Test level.
 *** Some tiles to render.
 *** A floor tile and a wall tile.
@@ -31,24 +31,24 @@ gone forever?
 *** Basic navigation.
 *** Can't walk through walls.
 
-== In Progress
-
 === v0.0.1-prototype_1 Groundwork for Basic Map and Level Object System
-* TODO - flesh out Game_level system idea No.3
-** Design player control input handling specifics in the level system
-
-* [x] Rename default texture index reference form "default texture ..." to
-"texture_index ...".
-** Update texture reference enum form from DEF_TEX_* to TEX_INDEX_*.
-** Update type name.
-* [ ] Implement basic level map system.
+* [x] Implement basic level map system.
 ** Creatures i.e. just the player atm.
 ** Structures i.e. floor, wall.
-* [ ] Update test map with a static (for now) dummy creature
+
+== In Progress
+
+=== v0.0.2-prototype_1 Groundwork for Basic Map and Level Object System
+* [x] Implement a general creature control system
+* [x] Re-introduce terrain constraints on movement i.e. can't walk through walls
+, but via the general creature control system this time
+* [ ] Implement groundwork for level object interaction system
+* [ ] Design player control input handling via the creature control system
+* [ ] Have an enemy critter on the test map, a static dummy (for now)
 
 == TODO
 
-=== v0.0.2-prototype_1
+=== v0.0.3-prototype_1
 * [ ] Add a few test mobs
 * [ ] Implement rudimentary mobs
 ** Hp
