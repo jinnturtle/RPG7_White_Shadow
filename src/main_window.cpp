@@ -8,6 +8,7 @@
 
 #include "FPS_manager.hpp"
 #include "Level_map.hpp"
+#include "Level_master.hpp"
 #include "Tile.hpp"
 #include "Creature.hpp"
 #include "logs.hpp"
@@ -52,6 +53,7 @@ auto run_main_window(App_environment* app) -> void
 
     level.add_creature(new Creature_human({.x = 5, .y = 3}, true));
 
+    Level_master level_master(&level);
 
     // main loop
     bool exit {false};
@@ -98,7 +100,7 @@ auto run_main_window(App_environment* app) -> void
 
         // update stage
 
-        level.update(&player_input);
+        level_master.update(&player_input);
         player_input.clear();
 
         // render stage

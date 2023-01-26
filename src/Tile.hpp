@@ -15,6 +15,7 @@ public:
     //
     //virtual auto get_type() -> Type = 0;
 
+    virtual auto is_passable() const -> bool = 0;
     virtual auto render(App_environment* app, SDL_Rect* rect) -> void = 0;
 
     virtual ~Tile() {};
@@ -22,6 +23,7 @@ public:
 
 class Tile_floor final: public Tile {
 public:
+    auto is_passable() const -> bool override;
     auto render(App_environment* app, SDL_Rect* rect) -> void override;
 
     virtual ~Tile_floor() override = default;
@@ -29,6 +31,7 @@ public:
 
 class Tile_wall final: public Tile {
 public:
+    auto is_passable() const -> bool override;
     auto render(App_environment* app, SDL_Rect* rect) -> void override;
 
     virtual ~Tile_wall() override = default;

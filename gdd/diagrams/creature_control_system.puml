@@ -1,0 +1,44 @@
+@startuml
+Title Creature Control System (a.k.a. Dungeon Master) Class Diagram
+
+class Level_map {
+- tiles : matrix<2, Tile*>
+- creatures : vector<Creature*>
+- get_creature(size_t x, size_t y) -> Creature*
+- get_tile(size_t x, size_t y) -> const Tile*
+- get_interactible(size_t x, size_t y) -> Interactible*
+}
+
+class Level_master {
++ update(vector<player_input>* inputs)
+- move_creatures(vector<player_input>* inputs)
+- resolve_combat(Creature* attacker, Creature* defender)
+- interact(Creature* creature, Interactible* tgt)
+}
+note top of Level_master
+    Level_master is responsible
+    for handling the logic of
+    gameplay interactions between
+    level objects e.g. creatures,
+    interactibles, etc.
+
+    Level_master serves to
+    separate concerns between
+    gameplay interaction logic
+    and tile data handling e.g.
+    map generation, bounds checks
+    etc.
+
+    That said, having "friend"
+    classes is often an indication
+    of bad design, so this is
+    likely not the final solution.
+    Will think some more on
+    alternative solutions.
+end note
+
+Level_master - Level_map : friend to >
+Tile --* Level_map
+Creature --* Level_map
+Interactible --* Level_map
+@enduml

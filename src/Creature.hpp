@@ -17,12 +17,13 @@ public:
     Creature(Vec2 pos, bool human_control = false);
     virtual ~Creature() = default;
 
+    auto get_pos() -> const Vec2*;
     auto is_human_controlled() -> bool;
 
     auto move(Creature_control_command cmd) -> void;
     virtual auto render(App_environment* app) -> void = 0;
 
-protected:
+private:
     Vec2 pos;
     bool human_control;
 };

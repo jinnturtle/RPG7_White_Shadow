@@ -1,4 +1,7 @@
 @startuml
+header Creature Control System Requirements Analysis via Activity Diagram
+title Creature Control System: Requirements Analysis v1.0
+
 start
 :read inputs;
 :process misc. inputs;
