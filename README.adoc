@@ -21,7 +21,7 @@ another brave -- or foolish -- enough to retrieve the lost gear before it is
 gone forever?
 * In this strange world, you are never at the top of the food chain.
 
-Technical design docs are link:gdd/[here]
+Most technical design docs are link:gdd/[here].
 
 == Done so far
 
