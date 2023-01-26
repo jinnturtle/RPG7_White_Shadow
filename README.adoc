@@ -5,6 +5,7 @@ Project start 2022-12-30 13:12
 == Idea
 
 === Main Features
+Subject to change unrecognisably as the project develops.
 
 * Explore endless randomly generated areas in a dark surreal setting.
 * Brave greater challenges for greater rewards.
@@ -20,6 +21,8 @@ another brave -- or foolish -- enough to retrieve the lost gear before it is
 gone forever?
 * In this strange world, you are never at the top of the food chain.
 
+Technical design docs are link:gdd/[here]
+
 == Done so far
 
 === v0.0.0-prototype_1 Basic Framework
@@ -27,7 +30,7 @@ gone forever?
 ** [x] Test level.
 *** Some tiles to render.
 *** A floor tile and a wall tile.
-** [x] Rudimentary player characer.
+** [x] Rudimentary player character.
 *** Basic navigation.
 *** Can't walk through walls.
 
