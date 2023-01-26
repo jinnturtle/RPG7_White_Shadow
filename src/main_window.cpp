@@ -3,6 +3,7 @@
 #include <array>
 #include <vector>
 #include <functional>
+#include <string>
 
 #include <SDL2/SDL.h>
 
@@ -14,6 +15,7 @@
 #include "logs.hpp"
 #include "helpers.hpp"
 #include "itoa.hpp"
+#include "version.hpp"
 
 auto run_main_window(App_environment* app) -> void
 {
@@ -25,6 +27,8 @@ auto run_main_window(App_environment* app) -> void
     constexpr size_t map_h {20};
     constexpr size_t tile_w {32};
     constexpr size_t tile_h {32};
+
+    const std::string app_version(app->title + " " + version_str());
 
     // generating a test map
     // TODO ugly test code, kill it with fire
@@ -60,7 +64,7 @@ auto run_main_window(App_environment* app) -> void
     bool show_fps {true};
     SDL_Event event {0};
     std::array<char, 8> fps_buf {0};
-    Vec2 fps_pos {.x = 0, .y = 0};
+    Vec2 txt_pos {.x = 0, .y = 0}; // controls render position of text objects
     // will prob need a FIFO queue
     std::vector<Creature_control_command> player_input;
     player_input.reserve(5);
@@ -111,14 +115,21 @@ auto run_main_window(App_environment* app) -> void
         level.render(app);
 
         if (show_fps) {
+            txt_pos.y = 0;
             /* size - 2 so we keep the null at the end to represent text as a
              * null-terminated string */
             app->fonts[FONT_IDX_mono_fast]->render(
                 // TODO - implement and use utoa (fps is unsigned)
                 itoa(fps_man.get_fps(), &fps_buf[fps_buf.size()-2]),
-                &fps_pos,
+                &txt_pos,
                 app->ren);
         }
+
+        txt_pos.y = app->win_h - 24;
+        app->fonts[FONT_IDX_mono_fast]->render(
+            app_version.c_str(),
+            &txt_pos,
+            app->ren);
 
         SDL_RenderPresent(app->ren);
 

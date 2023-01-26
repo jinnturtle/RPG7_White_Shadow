@@ -14,7 +14,7 @@ auto version_str() -> std::string
 #ifdef DEBUG
     << "DBG-"
 #endif // #ifdef DEBUG
-    << EXPAND_QUOTED(PROGRAM_VERSION);
+    << "v" << EXPAND_QUOTED(PROGRAM_VERSION);
 
     return buf.str();
 }
