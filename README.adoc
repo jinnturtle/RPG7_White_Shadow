@@ -1,6 +1,7 @@
 = RPG7 "White Shadow"
+:toc:
 
-Project start 2022-12-30 13:12
+Project start date: 2022-12-30 13:12.
 
 == Idea
 
@@ -23,6 +24,36 @@ gone forever?
 
 Most technical design docs are link:gdd/[here].
 
+== In Progress
+
+=== v0.0.2-prototype_1 Groundwork for Creature Control and Object Interactions
+* [x] Implement a general creature control system.
+* [x] Re-introduce terrain constraints on movement i.e. can't walk through walls
+, but via the general creature control system this time.
+* [x] Groundwork for level object interaction system.
+* [x] Player control input handling via the creature control system.
+* [x] Have an enemy critter on the test map, a static dummy (for now).
+
+== TODO
+
+=== v0.0.3-prototype_1
+* [ ] Add a few test mobs.
+* [ ] Implement rudimentary mobs.
+** Hp.
+** Attack.
+* Implement rudimentary mob behavior.
+** [ ] Homing to player.
+** [ ] Dealing damage.
+* [ ] Implement rudimentary way for player to deal damage
+
+=== v0.0.x-prototype_1
+* Random level generation.
+* Basic inventory system.
+* Etc.
+
+=== v0.1.0-prototype_1
+* TODO - define 0.1.0-prototype_1 feature requirements
+
 == Done so far
 
 === v0.0.0-prototype_1 Basic Framework
@@ -38,31 +69,3 @@ Most technical design docs are link:gdd/[here].
 * [x] Implement basic level map system.
 ** Creatures i.e. just the player atm.
 ** Structures i.e. floor, wall.
-
-== In Progress
-
-=== v0.0.2-prototype_1 Groundwork for Basic Map and Level Object System
-* [x] Implement a general creature control system
-* [x] Re-introduce terrain constraints on movement i.e. can't walk through walls
-, but via the general creature control system this time
-* [ ] Implement groundwork for level object interaction system
-* [ ] Design player control input handling via the creature control system
-* [ ] Have an enemy critter on the test map, a static dummy (for now)
-
-== TODO
-
-=== v0.0.3-prototype_1
-* [ ] Add a few test mobs
-* [ ] Implement rudimentary mobs
-** Hp
-** Attack
-* Implement rudimentary mob behavior
-** [ ] Homing to player
-** [ ] Dealing damage
-* [ ] Implement rudimentary way for player to deal damage
-
-=== v0.0.x-prototype_1
-* Etc.
-
-=== v0.1.0-prototype_1
-* TODO - define 0.1.0 feature requirements

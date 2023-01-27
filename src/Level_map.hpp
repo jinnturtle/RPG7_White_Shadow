@@ -15,6 +15,7 @@ public:
 
     friend class Level_master;
 
+    auto get_creature(size_t x, size_t y) -> Creature*;
     auto get_tile(size_t x, size_t y) -> const Tile*;
 
     auto add_creature(Creature* creature) -> void;

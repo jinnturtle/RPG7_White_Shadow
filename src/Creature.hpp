@@ -14,7 +14,7 @@ enum Creature_control_command {
 
 class Creature {
 public:
-    Creature(Vec2 pos, bool human_control = false);
+    Creature(Vec2 pos, bool human_control);
     virtual ~Creature() = default;
 
     auto get_pos() -> const Vec2*;
@@ -24,13 +24,14 @@ public:
     virtual auto render(App_environment* app) -> void = 0;
 
 private:
+    //TODO - don't need signed coordinates, should use an unsigned Vec2 here
     Vec2 pos;
     bool human_control;
 };
 
 class Creature_human: public Creature {
 public:
-    Creature_human(Vec2 pos, bool human_control);
+    Creature_human(Vec2 pos, bool human_control = false);
 
     auto render(App_environment* app) -> void override;
 };

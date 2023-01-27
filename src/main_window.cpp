@@ -56,6 +56,7 @@ auto run_main_window(App_environment* app) -> void
     }
 
     level.add_creature(new Creature_human({.x = 5, .y = 3}, true));
+    level.add_creature(new Creature_human(Vec2 {.x = 8, .y = 6}));
 
     Level_master level_master(&level);
 
