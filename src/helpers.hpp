@@ -34,6 +34,11 @@ struct Vec2d {
     double y;
 };
 
+struct Vec2u {
+    unsigned int x;
+    unsigned int y;
+};
+
 auto load_surface(const std::string& path) -> SDL_Surface*;
 auto load_texture(const std::string& path, SDL_Renderer* ren) -> SDL_Texture*;
 auto rasterize_txt(

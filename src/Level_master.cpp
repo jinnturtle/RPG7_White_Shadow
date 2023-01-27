@@ -22,17 +22,17 @@ auto Level_master::move_player(
 {
     if (commands->size() == 0) { return; }
 
-    Vec2 tgt_pos = *player->get_pos();
+    Vec2u tgt_pos = *player->get_pos();
     for (size_t i {0}; i < commands->size(); ++i) {
         switch(commands->at(i)) {
             case CCC_move_up:
-                --tgt_pos.y;
+                if (tgt_pos.y > 0) { --tgt_pos.y; }
                 break;
             case CCC_move_down:
                 ++tgt_pos.y;
                 break;
             case CCC_move_left:
-                --tgt_pos.x;
+                if (tgt_pos.x > 0) { --tgt_pos.x; }
                 break;
             case CCC_move_right:
                 ++tgt_pos.x;
