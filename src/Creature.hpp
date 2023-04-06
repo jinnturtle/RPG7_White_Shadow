@@ -1,7 +1,13 @@
 #ifndef SRC_CREATURE_HPP_
 #define SRC_CREATURE_HPP_
 
-#include "App_environment.hpp"
+#include <map>
+#include <vector>
+#include <string>
+
+#include <SDL2/SDL.h>
+
+#include "Creature_db.hpp"
 #include "helpers.hpp"
 
 enum Creature_control_command {
@@ -12,31 +18,32 @@ enum Creature_control_command {
     CCC_move_right
 };
 
-class Creature {
+class Creature final {
 public:
-    Creature(Vec2u pos, bool human_control);
-    virtual ~Creature() = default;
+    Creature(const std::string& name,
+            const Creature_db_entry* data,
+            SDL_Texture* tex);
+    ~Creature() = default;
 
-    auto get_pos() -> const Vec2u*;
-    auto is_human_controlled() -> bool;
+    int get_hp();
+    bool get_human_control();
+    int get_max_hp();
+    std::string get_name();
+    const Vec2u* get_pos();
 
-    auto move(Creature_control_command cmd) -> void;
-    virtual auto render(App_environment* app) -> void = 0;
+    void set_pos(const Vec2u* pos);
+    void set_human_control(bool val);
+
+    void move(Creature_control_command cmd);
+    void render(SDL_Renderer* ren);
 
 private:
+    std::string name;
     Vec2u pos;
+    SDL_Texture* tex;
+    int dmg;
+    int max_hp, hp;
     bool human_control;
-};
-
-class Creature_human: public Creature {
-public:
-    Creature_human(Vec2u pos, bool human_control = false);
-
-    auto render(App_environment* app) -> void override;
-};
-
-class Creature_gray_goo: public Creature {
-    Creature_gray_goo(Vec2u pos, bool human_control = false);
 };
 
 #endif // define SRC_CREATURE_HPP_

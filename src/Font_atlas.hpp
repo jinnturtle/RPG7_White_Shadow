@@ -20,22 +20,22 @@ class Font_atlas {
     virtual ~Font_atlas();
 
     // pass text via pointer to char buffer with length
-    virtual auto render(
+    virtual void render(
         const char* txt,
         size_t n,
         Vec2* pos,
-        SDL_Renderer* ren) -> void = 0;
+        SDL_Renderer* ren) = 0;
 
     // pass text via null-terminated char string
-    virtual auto render(
+    virtual void render(
         const char* txt,
         Vec2* pos,
-        SDL_Renderer* ren) -> void = 0;
+        SDL_Renderer* ren) = 0;
 
-    virtual auto make_tex(
+    virtual SDL_Texture* make_tex(
         const char* start,
         size_t n,
-        SDL_Renderer* ren) -> SDL_Texture* = 0;
+        SDL_Renderer* ren) = 0;
 
  protected:
      SDL_Texture* glyphs;
@@ -52,21 +52,21 @@ class Font_atlas_mono final : public Font_atlas {
         SDL_Color bg,
         Txt_raster_type ras_t);
 
-    auto render(
+    void render(
         const char* txt,
         size_t n,
         Vec2* pos,
-        SDL_Renderer* ren) -> void override;
+        SDL_Renderer* ren) override;
 
-    auto render(
+    void render(
         const char* txt,
         Vec2* pos,
-        SDL_Renderer* ren) -> void override;
+        SDL_Renderer* ren) override;
 
-    auto make_tex(
+    SDL_Texture* make_tex(
         const char* txt,
         size_t n,
-        SDL_Renderer* ren) -> SDL_Texture* override;
+        SDL_Renderer* ren) override;
 
  private:
      SDL_Rect glyph_rect; // one rect is enough for monospaced fonts

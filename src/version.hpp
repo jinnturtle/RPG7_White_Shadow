@@ -10,6 +10,6 @@
     #define PROGRAM_VERSION unknown-version
 #endif
 
-auto version_str() -> std::string;
+std::string version_str();
 
 #endif // SRC_VERSION_HPP_

@@ -32,8 +32,9 @@ App_environment::~App_environment()
     }
 }
 
-
-auto App_environment::load_textures() -> void
+// Will later be usefull for loading of UI and other general textures that
+// should not be loaded dynamically.
+void App_environment::load_textures()
 {
     if (this->ren == nullptr) {
         logs::err("can not load app textures: renderer is nil");
@@ -41,9 +42,10 @@ auto App_environment::load_textures() -> void
     }
 
     std::array<std::string, TEX_IDX_array_size> paths;
-    paths[TEX_IDX_human] = "data/gfx/human.png";
-    paths[TEX_IDX_floor] = "data/gfx/floor.png";
-    paths[TEX_IDX_wall]  = "data/gfx/wall.png";
+    /* tile textures are now loaded dynamically elsewhere, here we will load
+     * common textures (e.g. UI stuff) in the future*/
+    //paths[TEX_IDX_tile_floor]             = "data/gfx/floor.png";
+    //paths[TEX_IDX_tile_wall]              = "data/gfx/wall.png";
 
     for (size_t i {0}; i < this->texs.size(); ++i) {
         this->texs.at(i) = load_texture(paths.at(i), this->ren);
@@ -55,7 +57,7 @@ auto App_environment::load_textures() -> void
     }
 }
 
-auto App_environment::load_fonts() -> void
+void App_environment::load_fonts()
 {
     if (this->ren == nullptr) {
         logs::err( "can not load app fonts: renderer is nil");
@@ -78,6 +80,16 @@ auto App_environment::load_fonts() -> void
             Raster_blended);
     }
 
+/* TODO figure this out:
+ * Old Self you crazy ninja, why on earth is this commented out, why the
+ * Font_index entries are not, why if I tweak this it seems to have no effect?
+ * Plz at least leave a comment next time.
+ *
+ * I'm pretty sure shaded and blended rasterization used to behave differently
+ * from each other, now they don't seem to, need to dig deeper to figure out it
+ * seems. One was a good bit faster than the other, but didn't offer a
+ * "transparent" background IIRC.*/
+
 //     this->fonts[FONT_IDX_mono_blend] = new Font_atlas_mono(
 //         this->ren,
 //         "data/fonts/terminus/TerminusTTF-4.46.0.ttf",
@@ -95,26 +107,26 @@ auto App_environment::load_fonts() -> void
 //         Raster_shaded);
 }
 
-auto App_environment::load_default_assets() -> void
+void App_environment::load_default_assets()
 {
     this->load_textures();
     if (!this->err()) { this->load_fonts(); }
 }
 
-auto App_environment::err() -> bool
+bool App_environment::err()
 {
     return !this->err_txt.empty();
 }
 
 
-auto App_environment::get_err_txt() -> const char*
+const char* App_environment::get_err_txt()
 {
     return this-> err_txt.c_str();
 }
 
 // private ---------------------------------------------------------------------
 
-auto App_environment::set_err(const std::string& txt) -> void
+void App_environment::set_err(const std::string& txt)
 {
     this->err_txt = txt;
 }

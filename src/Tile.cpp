@@ -1,21 +1,14 @@
 #include "Tile.hpp"
 
-auto Tile_floor::render(App_environment* app, SDL_Rect* rect) -> void
-{
-    SDL_RenderCopy(app->ren, app->texs[TEX_IDX_floor], nullptr, rect);
-}
+Tile::Tile(const Tile_db_entry* data, SDL_Texture* tex)
+:tex {tex}
+,passable {data->passable}
+{}
 
-auto Tile_floor::is_passable() const -> bool
-{
-    return true;
-}
+bool Tile::get_passable() const { return this->passable; }
+SDL_Texture* Tile::get_tex() const { return this->tex; }
 
-auto Tile_wall::render(App_environment* app, SDL_Rect* rect) -> void
+void Tile::render(SDL_Renderer* ren, SDL_Rect* rect) const
 {
-    SDL_RenderCopy(app->ren, app->texs[TEX_IDX_wall], nullptr, rect);
-}
-
-auto Tile_wall::is_passable() const -> bool
-{
-    return false;
+    SDL_RenderCopy(ren, this->tex, nullptr, rect);
 }

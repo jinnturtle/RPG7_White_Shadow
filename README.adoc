@@ -26,29 +26,43 @@ Most technical design docs are link:gdd/[here].
 
 == In Progress
 
-=== v0.0.2-prototype_1 Groundwork for Creature Control and Object Interactions
-* [x] Implement a general creature control system.
-* [x] Re-introduce terrain constraints on movement i.e. can't walk through walls
-, but via the general creature control system this time.
-* [x] Groundwork for level object interaction system.
-* [x] Player control input handling via the creature control system.
-* [x] Have an enemy critter on the test map, a static dummy (for now).
+=== v0.0.3-prototype_1 "Dynamic Resource Loading and New Test Level"
+* [x] A few test mobs.
+* [x] Rudimentary creature stats (later to be used in combat and also useful
+in spawning system for randomized stat derivation).
+** Health points.
+** Attack damage.
+* [x] Basic fundamentals of a mob spawning system (spawn tables, etc).
+* [x] Level tiles don't have to be unique, a reference to a type within a table
+of loaded tile types should be enough and more resource friendly.
+* [x] Improved test level and respective generation code.
+** Should make it easy to test creature behaviour models, tile texture
+adaptability, etc.
+** Consider human-readability and future ease of quick iteration, modification.
 
 == TODO
-
-=== v0.0.3-prototype_1
-* [ ] Add a few test mobs.
-* [ ] Implement rudimentary mobs.
-** Hp.
-** Attack.
-* Implement rudimentary mob behavior.
+=== v0.0.4-prototype_1 "Creatures Come Alive"
+* Rudimentary mob behavior.
 ** [ ] Homing to player.
 ** [ ] Dealing damage.
-* [ ] Implement rudimentary way for player to deal damage
+* [ ] Rudimentary way for player to deal damage.
+
+=== v0.0.5-prototype_1
+* [ ] Randomised mob spawning system (based on spawn tables and stat
+derivations).
+* [ ] Consider how the various mob stats should be configured. Prob will go with
+an sqlite3 database, but consider other alternatives.
+** Text config file(s)?
+** Code config file(s) e.g. struct tables (yay retro C), macros, constexprs?
+** Function overrides of pure-virtuals?
+** Database?
+* More...
 
 === v0.0.x-prototype_1
 * Random level generation.
 * Basic inventory system.
+* Dynamic texture selection for wall segments at corners, intersections, etc.
+* Creature navigation based on the A* algorithm.
 * Etc.
 
 === v0.1.0-prototype_1
@@ -69,3 +83,11 @@ Most technical design docs are link:gdd/[here].
 * [x] Implement basic level map system.
 ** Creatures i.e. just the player atm.
 ** Structures i.e. floor, wall.
+
+=== v0.0.2-prototype_1 Groundwork for Creature Control and Object Interactions
+* [x] Implement a general creature control system.
+* [x] Re-introduce terrain constraints on movement i.e. can't walk through walls
+, but via the general creature control system this time.
+* [x] Groundwork for level object interaction system.
+* [x] Player control input handling via the creature control system.
+* [x] Have an enemy critter on the test map, a static dummy (for now).

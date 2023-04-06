@@ -7,7 +7,7 @@
 #include <array>
 #include <sstream>
 
-auto logs::errt(Err_type err, const std::string& txt) -> void
+void logs::errt(Err_type err, const std::string& txt)
 {
     std::stringstream buf;
 

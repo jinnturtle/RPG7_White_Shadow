@@ -68,11 +68,11 @@ Font_atlas_mono::Font_atlas_mono(
         &this->glyph_rect.h);
 }
 
-auto Font_atlas_mono::render(
+void Font_atlas_mono::render(
     const char* txt,
     size_t n,
     Vec2* pos,
-    SDL_Renderer* ren) -> void
+    SDL_Renderer* ren)
 {
     SDL_Rect src_rect{this->glyph_rect};
     SDL_Rect dst_rect{
@@ -89,10 +89,10 @@ auto Font_atlas_mono::render(
     }
 }
 
-auto Font_atlas_mono::render(
+void Font_atlas_mono::render(
     const char* txt,
     Vec2* pos,
-    SDL_Renderer* ren) -> void
+    SDL_Renderer* ren)
 {
     SDL_Rect src_rect{this->glyph_rect};
     SDL_Rect dst_rect{
@@ -110,10 +110,10 @@ auto Font_atlas_mono::render(
     }
 }
 
-auto Font_atlas_mono::make_tex(
+SDL_Texture* Font_atlas_mono::make_tex(
     const char* txt,
     size_t n,
-    SDL_Renderer* ren) -> SDL_Texture*
+    SDL_Renderer* ren)
 {
     SDL_Texture* tex {SDL_CreateTexture(
         ren,

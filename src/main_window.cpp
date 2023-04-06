@@ -7,58 +7,29 @@
 
 #include <SDL2/SDL.h>
 
+#include "Creature_spawner.hpp"
 #include "FPS_manager.hpp"
 #include "Level_map.hpp"
 #include "Level_master.hpp"
+#include "Test_map.hpp"
 #include "Tile.hpp"
-#include "Creature.hpp"
-#include "logs.hpp"
+#include "Tile_db.hpp"
+#include "Tile_palette.hpp"
 #include "helpers.hpp"
 #include "itoa.hpp"
+#include "logs.hpp"
 #include "version.hpp"
 
-auto run_main_window(App_environment* app) -> void
+void run_main_window(App_environment* app)
 {
     DBG(3, "running main window");
 
-    FPS_manager fps_man;
-
-    constexpr size_t map_w {20};
-    constexpr size_t map_h {20};
-    constexpr size_t tile_w {32};
-    constexpr size_t tile_h {32};
-
     const std::string app_version(app->title + " " + version_str());
 
-    // generating a test map
-    // TODO ugly test code, kill it with fire
-    Level_map level(map_w, map_h, tile_w, tile_h);
-    for (size_t x {0}; x < map_w; ++x) {
-        for (size_t y {0}; y < map_h; ++y) {
-            if (x == 7) {
-                if (y == 5 || y == 6 || y == 7) {
-                    level.put_tile(x, y, new Tile_wall);
-                }
-                else {
-                    level.put_tile(x, y, new Tile_floor);
-                }
-            } else if (y == 7) {
-                if (x == 8 || x == 9) {
-                    level.put_tile(x, y, new Tile_wall);
-                }
-                else {
-                    level.put_tile(x, y, new Tile_floor);
-                }
-            } else {
-                level.put_tile(x, y, new Tile_floor);
-            }
-        }
-    }
+    FPS_manager fps_man;
 
-    level.add_creature(new Creature_human({.x = 5, .y = 3}, true));
-    level.add_creature(new Creature_human({.x = 8, .y = 6}));
-
-    Level_master level_master(&level);
+    Level_map* level = test_map::generate(app);
+    Level_master level_master(level);
 
     // main loop
     bool exit {false};
@@ -113,11 +84,11 @@ auto run_main_window(App_environment* app) -> void
         SDL_SetRenderDrawColor(app->ren, 0x00, 0x00, 0x00, 0x00);
         SDL_RenderClear(app->ren);
 
-        level.render(app);
+        level->render();
 
         if (show_fps) {
             txt_pos.y = 0;
-            /* size - 2 so we keep the null at the end to represent text as a
+            /* size -2 so we keep the null at the end to represent text as a
              * null-terminated string */
             app->fonts[FONT_IDX_mono_fast]->render(
                 // TODO - implement and use utoa (fps is unsigned)

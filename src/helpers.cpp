@@ -8,7 +8,7 @@
 
 #include "logs.hpp"
 
-auto load_surface(const std::string& path) -> SDL_Surface*
+SDL_Surface* load_surface(const std::string& path)
 {
     DBG(10, "loading surface from '", path, "'");
 
@@ -21,7 +21,7 @@ auto load_surface(const std::string& path) -> SDL_Surface*
     return sfc;
 }
 
-auto load_texture(const std::string& path, SDL_Renderer* ren) -> SDL_Texture*
+SDL_Texture* load_texture(const std::string& path, SDL_Renderer* ren)
 {
     DBG(2, "loading texture from '", path, "'");
 
@@ -42,11 +42,11 @@ auto load_texture(const std::string& path, SDL_Renderer* ren) -> SDL_Texture*
     return tex;
 }
 
-auto rasterize_txt(
+SDL_Texture* rasterize_txt(
     const std::string& txt, int size,
     SDL_Color fg, SDL_Color bg,
     const std::string& fpath, SDL_Renderer* ren,
-    Txt_raster_type ras_t) -> SDL_Texture*
+    Txt_raster_type ras_t)
 {
     DBG(9, "rasterizing text: '", txt, "'");
 

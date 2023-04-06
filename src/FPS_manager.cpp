@@ -16,7 +16,7 @@ FPS_manager::FPS_manager()
     this->set_fps(60);
 }
 
-auto FPS_manager::end_frame() -> void
+void FPS_manager::end_frame()
 {
     this->end = Clock::now();
     this->real_dur = this->end - this->prev_end;
@@ -29,12 +29,12 @@ auto FPS_manager::end_frame() -> void
     this->prev_end = Clock::now();
 }
 
-auto FPS_manager::get_fps() -> unsigned
+unsigned FPS_manager::get_fps()
 {
     return std::chrono::duration_cast<nanoseconds>(seconds(1)) / this->real_dur;
 }
 
-auto FPS_manager::set_fps(unsigned fps) -> void
+void FPS_manager::set_fps(unsigned fps)
 {
     // compensating for rounding inaccuracy
     fps += 1;
@@ -42,17 +42,17 @@ auto FPS_manager::set_fps(unsigned fps) -> void
     this->tgt_dur = std::chrono::duration_cast<nanoseconds>(seconds(1)) / fps;
 }
 
-auto FPS_manager::toggle_cap() -> void
+void FPS_manager::toggle_cap()
 {
     this->cap_frames = !this->cap_frames;
 }
 
-auto FPS_manager::cap() -> void
+void FPS_manager::cap()
 {
     this->cap_frames = true;
 }
 
-auto FPS_manager::uncap() -> void
+void FPS_manager::uncap()
 {
     this->cap_frames = false;
 }

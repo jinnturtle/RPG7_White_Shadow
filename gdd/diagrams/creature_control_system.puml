@@ -37,8 +37,39 @@ note top of Level_master
     alternative solutions.
 end note
 
+class Creature {
+- ai_type : creature_ai_ref
+}
+note top of Creature
+    Storing a behaviour type
+    reference will allow cretures
+    to have different behaviours
+    e.g. depending on creature type
+    and modifiers, etc.
+
+    Would like to avoid the complexity
+    caused by indirection if possible.
+end note
+
+class Creature_AI
+
+class Simple_AI
+class Ground_melee_AI
+class Ground_ranged_AI
+class Flying_melee_AI
+class Flying_ranged_AI
+
 Level_master - Level_map : friend to >
+Level_master -- Creature_AI
 Tile --* Level_map
 Creature --* Level_map
 Interactible --* Level_map
+
+Creature_AI <-- Simple_AI
+Creature_AI <-- Ground_melee_AI
+Creature_AI <-- Ground_ranged_AI
+Creature_AI <-- Flying_melee_AI
+Creature_AI <-- Flying_ranged_AI
+
+Creature . Creature_AI : indirect ref.
 @enduml

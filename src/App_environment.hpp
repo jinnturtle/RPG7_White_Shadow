@@ -6,10 +6,11 @@
 
 #include "Font_atlas.hpp"
 
+// Will be later used for UI texture refs etc. This used to hold texture refs
+// that are now loaded dynamically e.g. level tiles, creatures, etc.
 enum Texture_index {
-    TEX_IDX_human = 0,
-    TEX_IDX_floor,
-    TEX_IDX_wall,
+//    TEX_IDX_tile_floor = 0,
+//    TEX_IDX_tile_wall,
 
     TEX_IDX_array_size
 };
@@ -26,12 +27,12 @@ public:
     App_environment(std::string title, int win_w, int win_h);
     ~App_environment();
 
-    auto load_default_assets() -> void;
-    auto load_textures() -> void;
-    auto load_fonts() -> void;
+    void load_default_assets();
+    void load_textures();
+    void load_fonts();
 
-    auto err() -> bool; // returns true if there is an error
-    auto get_err_txt() -> const char*;
+    bool err(); // returns true if there is an error
+    const char* get_err_txt();
 
     std::array<SDL_Texture*, TEX_IDX_array_size> texs; // default textures
     std::array<Font_atlas*, FONT_IDX_array_size> fonts; // default fonts

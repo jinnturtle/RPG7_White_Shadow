@@ -39,12 +39,12 @@ struct Vec2u {
     unsigned int y;
 };
 
-auto load_surface(const std::string& path) -> SDL_Surface*;
-auto load_texture(const std::string& path, SDL_Renderer* ren) -> SDL_Texture*;
-auto rasterize_txt(
+SDL_Surface* load_surface(const std::string& path);
+SDL_Texture* load_texture(const std::string& path, SDL_Renderer* ren);
+SDL_Texture* rasterize_txt(
     const std::string& txt, int size,
     SDL_Color fg, SDL_Color bg,
     const std::string& fpath, SDL_Renderer* ren,
-    Txt_raster_type ras_t) -> SDL_Texture*;
+    Txt_raster_type ras_t);
 
 #endif // SRC_HELPERS_HPP_

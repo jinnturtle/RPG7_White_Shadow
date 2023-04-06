@@ -6,19 +6,19 @@ Level_master::Level_master(Level_map* map)
 : map {map}
 {}
 
-auto Level_master::move_creatures(
-        std::vector<Creature_control_command>* commands) -> void
+void Level_master::move_creatures(
+        std::vector<Creature_control_command>* commands)
 {
     for (auto& creature : this->map->creatures) {
-        if (creature->is_human_controlled()) {
+        if (creature->get_human_control()) {
             this->move_player(creature, commands);
         }
     }
 }
 
-auto Level_master::move_player(
+void Level_master::move_player(
         Creature* player,
-        std::vector<Creature_control_command>* commands) -> void
+        std::vector<Creature_control_command>* commands)
 {
     if (commands->size() == 0) { return; }
 
@@ -42,14 +42,15 @@ auto Level_master::move_player(
         }
     }
 
-    const Tile* tgt_tile = this->map->get_tile(tgt_pos.x, tgt_pos.y);
-    if (tgt_tile->is_passable() == false) {
+    if (this->map->get_tile(tgt_pos.x, tgt_pos.y)->get_passable() == false) {
         DBG(8, "won't move due to terrain at ", tgt_pos.x, "x", tgt_pos.y);
         return;
     }
     Creature* tgt_creature = this->map->get_creature(tgt_pos.x, tgt_pos.y);
     if (tgt_creature != nullptr) {
-        DBG(8, "WIP: staring menacingly at creature in ",
+        DBG(8, "WIP: staring menacingly at the ",
+                tgt_creature->get_name(),
+                " in ",
                 tgt_pos.x, "x", tgt_pos.y,
                 " because combat is not implemented yet");
         return;
@@ -61,8 +62,7 @@ auto Level_master::move_player(
     }
 }
 
-auto Level_master::update(
-        std::vector<Creature_control_command>* commands) -> void
+void Level_master::update(std::vector<Creature_control_command>* commands)
 {
     this->move_creatures(commands);
 }

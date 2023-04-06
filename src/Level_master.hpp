@@ -15,14 +15,14 @@ public:
     Level_master(Level_map* map);
     ~Level_master() = default;
 
-    auto update(std::vector<Creature_control_command>* commands) -> void;
+    void update(std::vector<Creature_control_command>* commands);
 
 private:
-    auto move_creatures(
-            std::vector<Creature_control_command>* commands) -> void;
-    auto move_player(
+    void move_creatures(
+            std::vector<Creature_control_command>* commands);
+    void move_player(
             Creature* player,
-            std::vector<Creature_control_command>* commands) -> void;
+            std::vector<Creature_control_command>* commands);
 
     Level_map* map;
 };

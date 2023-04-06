@@ -13,12 +13,13 @@
 #include "logs.hpp"
 #include "main_window.hpp"
 
-auto make_sdl_window(App_environment* app) -> int;
-auto make_sdl_renderer(App_environment* app) -> int;
-auto init_sdl() -> int;
-auto deinit_sdl(App_environment* app) -> void;
+//TODO the SDL utils/wrappers should have their own home
+int make_sdl_window(App_environment* app);
+int make_sdl_renderer(App_environment* app);
+int init_sdl();
+void deinit_sdl(App_environment* app);
 
-auto main() -> int
+int main()
 {
     App_environment app(std::move("RPG7 White Shadow"), 1333, 720);
 

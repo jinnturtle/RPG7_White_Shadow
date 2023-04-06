@@ -7,7 +7,7 @@
 // quotes are added automatically when a macro calls a macro
 #define EXPAND_QUOTED(x) EXPAND(x)
 
-auto version_str() -> std::string
+std::string version_str()
 {
     std::stringstream buf;
     buf

@@ -21,25 +21,26 @@ namespace logs {
     static std::ostream* err_out = &std::cerr;
 
     // print specialised error message
-    auto errt(Err_type err, const std::string& txt) -> void;
+    void errt(Err_type err, const std::string& txt);
 
     template<typename... Ts>
-    auto print(std::ostream* out, Ts... args) -> void
+    void print(std::ostream* out, Ts... args)
     {
         std::stringstream buf;
         (buf << ... << args);
         (*out) << buf.str() << std::endl;
     }
 
+    // TODO this will be called a lot, prob worth a look into inlining or smth
     template<typename... Ts>
-    auto dbg(Ts... args) -> void
+    void dbg(Ts... args)
     {
         print(std_out, "DEBUG ", timestamp_nano(), " ", args...);
     }
 
     // log into error output (stderr, should be configurable in the future)
     template<typename... Ts>
-    auto err(Ts... args) -> void
+    void err(Ts... args)
     {
         print(err_out, "ERROR ", timestamp_nano(), " ", args...);
     }

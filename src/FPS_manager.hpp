@@ -8,14 +8,14 @@ class FPS_manager final {
     FPS_manager();
 
     // mark end of current frame (update fps, etc)
-    auto end_frame() -> void;
+    void end_frame();
     // get actual fps
-    auto get_fps() -> unsigned;
+    unsigned get_fps();
     // what fps to aim for if frame cap is on
-    auto set_fps(unsigned fps) -> void;
-    auto toggle_cap() -> void;
-    auto cap() -> void;
-    auto uncap() -> void;
+    void set_fps(unsigned fps);
+    void toggle_cap();
+    void cap();
+    void uncap();
 
  private:
     bool cap_frames;

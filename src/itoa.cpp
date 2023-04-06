@@ -15,7 +15,7 @@ const char digit_pairs[201] = {
 
 static constexpr int BUFFER_SIZE = 11;
 
-auto itostr(int val) -> std::string
+std::string itostr(int val)
 {
     char buf[BUFFER_SIZE];
     char *it = &buf[BUFFER_SIZE-2];
@@ -46,7 +46,7 @@ auto itostr(int val) -> std::string
     return std::string(it, &buf[BUFFER_SIZE]-it);
 }
 
-auto itostr(unsigned int val) -> std::string
+std::string itostr(unsigned int val)
 {
     char buf[BUFFER_SIZE];
     char* it = &buf[BUFFER_SIZE-2];
@@ -65,7 +65,7 @@ auto itostr(unsigned int val) -> std::string
     return std::string(it, &buf[BUFFER_SIZE] - it);
 }
 
-auto itoa(int val, char* buf) -> char*
+char* itoa(int val, char* buf)
 {
     buf -= 2;
 

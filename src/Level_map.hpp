@@ -3,35 +3,50 @@
 
 #include <vector>
 
-#include "App_environment.hpp"
-#include "Tile.hpp"
+#include <SDL2/SDL.h>
+
 #include "Creature.hpp"
-#include "logs.hpp"
+#include "Creature_spawner.hpp"
+#include "Tile.hpp"
+#include "Tile_palette.hpp"
 
 class Level_map final {
 public:
-    Level_map(size_t w, size_t h, size_t tile_w, size_t tile_h);
+    Level_map(size_t w, size_t h);
     ~Level_map();
 
     friend class Level_master;
 
-    auto get_creature(size_t x, size_t y) -> Creature*;
-    auto get_tile(size_t x, size_t y) -> const Tile*;
+    Creature* get_creature(size_t x, size_t y);
+    const Tile* get_tile(size_t x, size_t y);
 
-    auto add_creature(Creature* creature) -> void;
-    auto put_tile(size_t x, size_t y, Tile* tile) -> void;
-    auto render(App_environment* app) -> void;
-    //auto replace_obj(size_t x, size_t y, size_t l, Level_object* obj) -> void;
+    void set_creature_spawner(Creature_spawner* cs);
+    void set_tile_palette(Tile_palette* tp);
+
+    void add_creature(Creature* creature);
+    void put_tile(size_t x, size_t y, const Tile* tile);
+    //TODO decouple rendering from data ops via e.g. a viewport class
+    void render();
+    /* Initialises some rendering related data, should be called after at least
+     * the tile at 0x0 is assigned, and before the first call to render().*/
+    void render_init(SDL_Renderer* ren);
 
 private:
+    /*TODO db is no longer needed for creature and tile loaders, so shoudl prob
+     * close */
+    /*TODO think how to minimise future mistakes which may arise from forgetting
+     * to call render_init() and to set tile and creature loaders.*/
+    Tile_palette* tile_palette;
+    Creature_spawner* creature_spawner;
+    SDL_Renderer* ren;
     //TODO implement a simple Matrix?
-    std::vector<std::vector<Tile*>*>* tiles;
+    std::vector<std::vector<const Tile*>> tiles;
     std::vector<Creature*> creatures;
-    size_t tile_w;
-    size_t tile_h;
+    int tile_w;
+    int tile_h;
 
     // returns true if x/y is within bounds, false otherwise
-    auto check_bounds(size_t x, size_t y) -> bool;
+    bool check_bounds(size_t x, size_t y);
 };
 
 #endif // define SRC_LEVEL_MAP_HPP_

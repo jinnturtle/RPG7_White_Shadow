@@ -3,38 +3,21 @@
 
 #include <SDL2/SDL.h>
 
-#include "App_environment.hpp"
+#include "Tile_db.hpp"
 
-class Tile {
+class Tile final {
 public:
-    //TODO Maybe we can avoid using this type differentiation technique?
-    //enum Type {
-    //    TYPE_wall = 0,
-    //    TYPE_floor
-    //};
-    //
-    //virtual auto get_type() -> Type = 0;
+    Tile(const Tile_db_entry* data, SDL_Texture* tex);
+    ~Tile() = default;
 
-    virtual auto is_passable() const -> bool = 0;
-    virtual auto render(App_environment* app, SDL_Rect* rect) -> void = 0;
+    bool get_passable() const;
+    SDL_Texture* get_tex() const;
 
-    virtual ~Tile() {};
-};
+    void render(SDL_Renderer* ren, SDL_Rect* rect) const;
 
-class Tile_floor final: public Tile {
-public:
-    auto is_passable() const -> bool override;
-    auto render(App_environment* app, SDL_Rect* rect) -> void override;
-
-    virtual ~Tile_floor() override = default;
-};
-
-class Tile_wall final: public Tile {
-public:
-    auto is_passable() const -> bool override;
-    auto render(App_environment* app, SDL_Rect* rect) -> void override;
-
-    virtual ~Tile_wall() override = default;
+private:
+    SDL_Texture* tex;
+    bool passable; // can normally be walked through/on?
 };
 
 #endif // SRC_TILE_HPP_
