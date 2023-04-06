@@ -35,4 +35,8 @@ public:
     auto render(App_environment* app) -> void override;
 };
 
+class Creature_gray_goo: public Creature {
+    Creature_gray_goo(Vec2u pos, bool human_control = false);
+};
+
 #endif // define SRC_CREATURE_HPP_

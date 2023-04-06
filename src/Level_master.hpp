@@ -1,3 +1,6 @@
+/* Level_master contains logic pertaining to the gameplay interactions between
+ * the various objects in the Level.*/
+
 #ifndef SRC_LEVEL_MASTER_HPP_
 #define SRC_LEVEL_MASTER_HPP_
 
@@ -6,9 +9,6 @@
 #include "Level_map.hpp"
 #include "Tile.hpp"
 #include "Creature.hpp"
-
-/* Level_master contains logic pertaining to the gameplay interactions between
- * the various objects in the Level.*/
 
 class Level_master final {
 public:

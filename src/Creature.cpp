@@ -43,10 +43,17 @@ Creature_human::Creature_human(Vec2u pos, bool human_control)
 auto Creature_human::render(App_environment* app) -> void
 {
     // TODO get rid of magic numbers
-    SDL_Rect rect {
-        .x = static_cast<int>(this->get_pos()->x),
-        .y = static_cast<int>(this->get_pos()->y), .w = 32, .h = 32};
-    rect.x *= rect.w;
-    rect.y *= rect.h;
-    SDL_RenderCopy(app->ren, app->texs[TEX_IDX_human], nullptr, &rect);
+    SDL_Texture* tex = app->texs[TEX_IDX_human];
+    SDL_Rect rect;
+    SDL_QueryTexture(tex, nullptr, nullptr, &rect.w, &rect.h);
+    rect.x = static_cast<int>(this->get_pos()->x) * rect.w;
+    rect.y = static_cast<int>(this->get_pos()->y) * rect.h;
+
+    SDL_RenderCopy(app->ren, tex, nullptr, &rect);
+}
+
+Creature_gray_goo::Creature_gray_goo(Vec2u pos, bool human_control)
+: Creature(pos, human_control)
+{
+    //TODO
 }
