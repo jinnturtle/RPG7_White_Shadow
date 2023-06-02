@@ -10,7 +10,6 @@ CXX_SRC =\
 	Font_atlas.cpp \
 	Level_map.cpp \
 	Level_master.cpp \
-	Test_map.cpp \
 	Tile.cpp \
 	Tile_db.cpp \
 	Tile_palette.cpp \
@@ -18,6 +17,7 @@ CXX_SRC =\
 	itoa.cpp \
 	logs.cpp \
 	main_window.cpp \
+	test_map.cpp \
 	version.cpp
 
 C_SRC =\

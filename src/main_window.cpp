@@ -11,13 +11,13 @@
 #include "FPS_manager.hpp"
 #include "Level_map.hpp"
 #include "Level_master.hpp"
-#include "Test_map.hpp"
 #include "Tile.hpp"
 #include "Tile_db.hpp"
 #include "Tile_palette.hpp"
 #include "helpers.hpp"
 #include "itoa.hpp"
 #include "logs.hpp"
+#include "test_map.hpp"
 #include "version.hpp"
 
 void run_main_window(App_environment* app)
