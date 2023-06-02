@@ -19,7 +19,7 @@ public:
     Creature_db();
 
     // returns data entry under key, or nullptr if entry is not found
-    const Creature_db_entry* find(std::string key);
+    const Creature_db_entry* find(const std::string& key) const;
 
 private:
     //TODO prob should define const string, const entry to disambiguate intent

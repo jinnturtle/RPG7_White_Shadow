@@ -25,27 +25,13 @@ gone forever?
 Most technical design docs are link:gdd/[here].
 
 == In Progress
-
-=== v0.0.3-prototype_1 "Dynamic Resource Loading and New Test Level"
-* [x] A few test mobs.
-* [x] Rudimentary creature stats (later to be used in combat and also useful
-in spawning system for randomized stat derivation).
-** Health points.
-** Attack damage.
-* [x] Basic fundamentals of a mob spawning system (spawn tables, etc).
-* [x] Level tiles don't have to be unique, a reference to a type within a table
-of loaded tile types should be enough and more resource friendly.
-* [x] Improved test level and respective generation code.
-** Should make it easy to test creature behaviour models, tile texture
-adaptability, etc.
-** Consider human-readability and future ease of quick iteration, modification.
-
-== TODO
 === v0.0.4-prototype_1 "Creatures Come Alive"
 * Rudimentary mob behavior.
 ** [ ] Homing to player.
 ** [ ] Dealing damage.
 * [ ] Rudimentary way for player to deal damage.
+
+== TODO
 
 === v0.0.5-prototype_1
 * [ ] Randomised mob spawning system (based on spawn tables and stat
@@ -91,3 +77,17 @@ an sqlite3 database, but consider other alternatives.
 * [x] Groundwork for level object interaction system.
 * [x] Player control input handling via the creature control system.
 * [x] Have an enemy critter on the test map, a static dummy (for now).
+
+=== v0.0.3-prototype_1 "Dynamic Resource Loading and New Test Level"
+* [x] A few test mobs.
+* [x] Rudimentary creature stats (later to be used in combat and also useful
+in spawning system for randomized stat derivation).
+** Health points.
+** Attack damage.
+* [x] Basic fundamentals of a mob spawning system (spawn tables, etc).
+* [x] Level tiles don't have to be unique, a reference to a type within a table
+of loaded tile types should be enough and more resource friendly.
+* [x] Improved test level and respective generation code.
+** Should make it easy to test creature behaviour models, tile texture
+adaptability, etc.
+** Consider human-readability and future ease of quick iteration, modification.

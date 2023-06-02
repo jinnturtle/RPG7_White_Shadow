@@ -23,12 +23,10 @@ Level_map* test_map::generate(App_environment* app)
     std::array<std::pair<std::string, const Tile*>, 2> tile_ref_table;
     tile_ref_table[Tile_id_floor] = {"floor", nullptr};
     tile_ref_table[Tile_id_wall]  = {"wall", nullptr};
-    /* TODO db gets invalidated once we leave scope, but reference to db will
-     * remain in Tile_palette, transfer management to Tile_palette? */
     Tile_db tile_db;
-    Tile_palette* tile_palette = new Tile_palette(&tile_db);
+    Tile_palette* tile_palette = new Tile_palette();
     for (std::pair<std::string, const Tile*>& ref : tile_ref_table) {
-        if (tile_palette->load(ref.first, app->ren)) {
+        if (tile_palette->load(&tile_db, ref.first, app->ren)) {
             logs::err("while loading tile data");
             return nullptr;
         }
@@ -39,13 +37,10 @@ Level_map* test_map::generate(App_environment* app)
     std::array<std::string, 2> mob_spawn_table;
     mob_spawn_table[Mob_id_human]    = "human";
     mob_spawn_table[Mob_id_gray_goo] = "gray_goo";
-    /* TODO db gets invalidated once execution leaves scope, but
-     * Creature_spawner may still attempt access via stored reference, consider
-     * moving management to Creature_spawner or other solutions */
     Creature_db creature_db;
-    Creature_spawner* creature_spawner = new Creature_spawner(&creature_db);
+    Creature_spawner* creature_spawner = new Creature_spawner();
     for (const std::string& name : mob_spawn_table) {
-        if (creature_spawner->load(name, app->ren)) {
+        if (creature_spawner->load(&creature_db, name, app->ren)) {
             logs::err("while loading creature data");
             return nullptr;
         }

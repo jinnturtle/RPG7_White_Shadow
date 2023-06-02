@@ -18,16 +18,15 @@
  * like.*/
 class Creature_spawner final {
 public:
-    Creature_spawner(Creature_db* db);
+    Creature_spawner();
     ~Creature_spawner();
 
-    int load(const std::string& name, SDL_Renderer* ren);
+    int load(const Creature_db* db, const std::string& name, SDL_Renderer* ren);
     Creature* spawn(const std::string& name, const Vec2u* pos);
 
 private:
     std::map<std::string, Creature> loaded;
     std::vector<SDL_Texture*> texs; // used for resource deallocation
-    Creature_db* db;
 };
 
 

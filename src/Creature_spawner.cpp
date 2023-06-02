@@ -2,8 +2,7 @@
 
 #include "logs.hpp"
 
-Creature_spawner::Creature_spawner(Creature_db* db)
-:db {db}
+Creature_spawner::Creature_spawner()
 {}
 
 Creature_spawner::~Creature_spawner()
@@ -16,9 +15,17 @@ Creature_spawner::~Creature_spawner()
     }
 }
 
-int Creature_spawner::load(const std::string& name, SDL_Renderer* ren)
+int Creature_spawner::load(
+        const Creature_db* db,
+        const std::string& name,
+        SDL_Renderer* ren)
 {
-    const Creature_db_entry* found = this->db->find(name);
+    if (db == nullptr) {
+        logs::err("null creature db provided to load from");
+        return 1;
+    }
+
+    const Creature_db_entry* found = db->find(name);
     if (found == nullptr) {
         logs::err("creature '", name,  "' not found in DB");
         return 1;

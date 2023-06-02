@@ -24,17 +24,16 @@
 class Tile_palette final
 {
 public:
-    Tile_palette(const Tile_db* db);
+    Tile_palette();
     ~Tile_palette();
 
-    int load(const std::string& name, SDL_Renderer* ren);
+    int load(const Tile_db* db, const std::string& name, SDL_Renderer* ren);
     // provide a reference to a loaded tile
     const Tile* make_ref(const std::string& name);
 
 private:
     std::map<std::string, Tile> loaded;
     std::vector<SDL_Texture*> texs; // used for resource deallocation
-    const Tile_db* db;
 };
 
 #endif //define SRC_TILE_PALETTE_HPP_

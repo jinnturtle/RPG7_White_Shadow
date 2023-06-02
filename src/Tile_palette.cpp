@@ -3,8 +3,7 @@
 #include "helpers.hpp"
 #include "logs.hpp"
 
-Tile_palette::Tile_palette(const Tile_db* db)
-:db {db}
+Tile_palette::Tile_palette()
 {}
 
 Tile_palette::~Tile_palette()
@@ -17,9 +16,17 @@ Tile_palette::~Tile_palette()
     }
 }
 
-int Tile_palette::load(const std::string& name, SDL_Renderer* ren)
+int Tile_palette::load(
+        const Tile_db* db,
+        const std::string& name,
+        SDL_Renderer* ren)
 {
-    const Tile_db_entry* found = this->db->find(name);
+    if (db == nullptr) {
+        logs::err("null tile db provided to load from");
+        return 1;
+    }
+
+    const Tile_db_entry* found = db->find(name);
     if (found == nullptr) {
         logs::err("tile '", name,  "' not found in DB");
         return 1;

@@ -12,7 +12,7 @@ Creature_db::Creature_db()
         .max_hp = 3}}}
 {}
 
-const Creature_db_entry* Creature_db::find(std::string key)
+const Creature_db_entry* Creature_db::find(const std::string& key) const
 {
     auto result = this->data.find(key);
     if (result == this->data.end()) { return nullptr; }
